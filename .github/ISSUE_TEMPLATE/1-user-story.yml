@@ -39,12 +39,12 @@ body:
     id: tasks
     attributes:
       label: Tasks
-      description: "List of task-issues necessary to complete part of this user story."
+      description: "List of smaller user-story-issues necessary to complete part of this user story."
       placeholder: |
-        Create a "Task Issue" then use the text-area's create a task list linking each task to this user-story with the # syntax."
+        Create smaller "User Story Issues" then use the text-area's create a task list linking each task user-story to this user-story with the # syntax."
         e.g. - [ ] #5555"
     validations:
-      required: true
+      required: false
   - type: textarea
     id: acceptance-criteria
     attributes:
