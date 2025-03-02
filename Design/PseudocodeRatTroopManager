@@ -1,0 +1,20 @@
+selectTroops(area, isControlHeld):
+    if not isControlHeld:
+        deselectTroops()
+    for each troop in allTroops:
+        if troop is inside area:
+            troop.select()
+            add troop to selectedTroops
+
+deselectTroops():
+    for each troop in selectedTroops:
+        troop.deselect()
+    clear selectedTroops
+
+showActionMenu():
+    if selectedTroops is not empty:
+        display menu with available actions
+
+performAction(action):
+    for each troop in selectedTroops:
+        troop.performAction(action)

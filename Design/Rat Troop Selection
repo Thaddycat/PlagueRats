@@ -1,0 +1,86 @@
+public class RatTroop {
+    private int x;
+    private int y;
+    private boolean isSelected;
+
+    // Constructor
+    public RatTroop(int startX, int startY) {
+        this.x = startX;
+        this.y = startY;
+        this.isSelected = false;
+    }
+
+    // Select this troop
+    public void select() {
+        isSelected = true;
+    }
+
+    // Deselect this troop
+    public void deselect() {
+        isSelected = false;
+    }
+
+    // Move the troop to a new location
+    public void move(int targetX, int targetY) {
+        this.x = targetX;
+        this.y = targetY;
+    }
+
+    // Get troop’s position
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public boolean isSelected() { return isSelected; }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelectionManager {
+    private List<RatTroop> selectedTroops;
+
+    public SelectionManager() {
+        selectedTroops = new ArrayList<>();
+    }
+
+    // Select a single troop
+    public void selectTroop(RatTroop troop, boolean isControlHeld) {
+        if (!isControlHeld) {
+            clearSelection();
+        }
+        if (!selectedTroops.contains(troop)) {
+            selectedTroops.add(troop);
+            troop.select();
+        }
+    }
+
+    // Deselect all troops
+    public void clearSelection() {
+        for (RatTroop troop : selectedTroops) {
+            troop.deselect();
+        }
+        selectedTroops.clear();
+    }
+
+    // Get currently selected troops
+    public List<RatTroop> getSelectedTroops() {
+        return selectedTroops;
+    }
+}
+
+public class ActionMenu {
+    public void showMenu(RatTroop troop) {
+        System.out.println("Action Menu:");
+        System.out.println("1. Move");
+        System.out.println("2. Attack");
+        System.out.println("3. Gather Resources");
+    }
+
+    public void executeAction(int action, RatTroop troop) {
+        switch (action) {
+            case 1 -> System.out.println("Moving troop...");
+            case 2 -> System.out.println("Attacking...");
+            case 3 -> System.out.println("Gathering resources...");
+            default -> System.out.println("Invalid action.");
+        }
+    }
+}

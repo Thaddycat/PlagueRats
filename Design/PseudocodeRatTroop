@@ -1,0 +1,17 @@
+select():
+    isSelected = true
+
+deselect():
+    isSelected = false
+
+moveTo(destination):
+    if isSelected:
+        position = destination
+
+performAction(action):
+    if action is "move":
+        get destination from user input
+        moveTo(destination)
+    else if action is "attack":
+        find nearest enemy
+        move toward enemy and attack

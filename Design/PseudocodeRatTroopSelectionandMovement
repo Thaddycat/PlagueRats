@@ -1,0 +1,40 @@
+Troop Selection/Deselection:
+
+On left mouse click:
+
+a. Clear the selection.
+b. Remove highlights from all previously selected rats.
+
+When CTRL and left mouse click:
+
+a. Keep any currently selected rats.
+
+On mouse click and drag:
+
+a. Capture starting position of the mouse.
+b. While dragging, draw a selection box.
+c. Capture the ending position of the mouse when released.
+d. Check which rats fall within the selection box.
+e. Highlight the selected rats.
+
+Movement Command:
+
+
+b. Capture the target position of the click.
+c. Send move command to all selected rats.
+d. Each rat moves toward the target position.
+
+Right-Click Action Menu:
+
+On right mouse click:
+a. Check if any rats are selected.
+b. Open a drop-down menu with available actions:
+i. Move
+ii. Attack
+iii. Gather resources
+iv. Build nest
+c. Capture player’s menu selection.
+d. Execute the chosen action for all selected rats.
+
+
+

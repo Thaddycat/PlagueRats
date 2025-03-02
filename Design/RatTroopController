@@ -1,0 +1,70 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class RatTroopController {
+
+    private Set<RatTroop> selectedTroops = new HashSet<>();
+
+    // Selects a single troop, replacing the current selection
+    public void selectTroop(RatTroop troop) {
+        selectedTroops.clear();
+        selectedTroops.add(troop);
+    }
+
+    // Adds a troop to the current selection (when holding Ctrl)
+    public void addTroopToSelection(RatTroop troop) {
+        selectedTroops.add(troop);
+    }
+
+    // Clears all selected troops (e.g. on left-clicking empty space)
+    public void clearSelection() {
+        selectedTroops.clear();
+    }
+
+    // Opens the action menu for the selected troops
+    public void openActionMenu() {
+        if (selectedTroops.isEmpty()) {
+            System.out.println("No troops selected.");
+            return;
+        }
+        System.out.println("Action menu opened for: " + selectedTroops);
+        // Placeholder for actual menu UI logic
+    }
+
+    // Issues a move command to the selected troops
+    public void moveSelectedTroops(int x, int y) {
+        if (selectedTroops.isEmpty()) {
+            System.out.println("No troops selected to move.");
+            return;
+        }
+        for (RatTroop troop : selectedTroops) {
+            troop.moveTo(x, y);
+        }
+    }
+
+    // Displays currently selected troops
+    public void showSelectedTroops() {
+        if (selectedTroops.isEmpty()) {
+            System.out.println("No troops currently selected.");
+        } else {
+            System.out.println("Selected troops: " + selectedTroops);
+        }
+    }
+}
+
+class RatTroop {
+    private String name;
+
+    public RatTroop(String name) {
+        this.name = name;
+    }
+
+    public void moveTo(int x, int y) {
+        System.out.println(name + " moving to coordinates: (" + x + ", " + y + ")");
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+}

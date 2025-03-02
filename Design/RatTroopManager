@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.List;
+
+// Class representing a single RatTroop
+public class RatTroop {
+    private int id;
+    private int xPosition;
+    private int yPosition;
+
+    public RatTroop(int id, int x, int y) {
+        this.id = id;
+        this.xPosition = x;
+        this.yPosition = y;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getXPosition() {
+        return xPosition;
+    }
+
+    public int getYPosition() {
+        return yPosition;
+    }
+
+    public void move(int newX, int newY) {
+        this.xPosition = newX;
+        this.yPosition = newY;
+        System.out.println("RatTroop " + id + " moved to (" + newX + ", " + newY + ")");
+    }
+}
+
+// Class handling troop selection and commands
+public class TroopManager {
+    private List<RatTroop> allTroops;
+    private List<RatTroop> selectedTroops;
+
+    public TroopManager() {
+        this.allTroops = new ArrayList<>();
+        this.selectedTroops = new ArrayList<>();
+    }
+
+    public void selectTroop(int troopId, boolean multiSelect) {
+        if (!multiSelect) {
+            selectedTroops.clear();
+        }
+        for (RatTroop troop : allTroops) {
+            if (troop.getId() == troopId && !selectedTroops.contains(troop)) {
+                selectedTroops.add(troop);
+                System.out.println("RatTroop " + troopId + " selected.");
+            }
+        }
+    }
+
+    public void deselectAll() {
+        selectedTroops.clear();
+        System.out.println("All troops deselected.");
+    }
+
+    public void moveSelectedTroops(int x, int y) {
+        for (RatTroop troop : selectedTroops) {
+            troop.move(x, y);
+        }
+    }
+
+    public void displayActionMenu() {
+        System.out.println("Action Menu: [1] Move  [2] Raid  [3] Build Nest");
+    }
+}

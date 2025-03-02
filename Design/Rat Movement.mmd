@@ -1,0 +1,47 @@
+classDiagram
+
+    class RatUnit {
+        - int id
+        - String type
+        - int health
+        - int speed
+        - Position position
+        - boolean selected
+
+        + void moveTo(Position destination)
+        + void performAction(String action)
+        + void select()
+        + void deselect()
+    }
+
+    class Position {
+        - int x
+        - int y
+
+        + Position(int x, int y)
+        + int getX()
+        + int getY()
+        + void setPosition(int x, int y)
+    }
+
+    class RatController {
+        - List<RatUnit> selectedUnits
+
+        + void selectUnits(Area selectionArea)
+        + void moveSelectedUnits(Position destination)
+        + void showActionMenu(RatUnit unit)
+        + void performActionOnSelected(String action)
+    }
+
+    class Area {
+        - Position start
+        - Position end
+
+        + Area(Position start, Position end)
+        + boolean contains(Position position)
+    }
+
+    RatController --> RatUnit : manages >
+    RatUnit --> Position : has >
+    RatController --> Area : uses >
+    Area --> Position : defines boundaries with >

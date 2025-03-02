@@ -1,0 +1,30 @@
+classDiagram
+    class RatTroop {
+        - int id
+        - Position position
+        - boolean isSelected
+        + select()
+        + deselect()
+        + moveTo(Position target)
+        + performAction(String action)
+    }
+
+    class Position {
+        - int x
+        - int y
+    }
+
+    class MouseInputHandler {
+        + handleLeftClick(Position clickPosition)
+        + handleRightClick(Position clickPosition)
+        + handleControlClick(Position clickPosition)
+    }
+
+    class ActionMenu {
+        + displayMenu(RatTroop troop)
+        + selectAction(String action, RatTroop troop)
+    }
+
+    RatTroop --> Position
+    MouseInputHandler --> RatTroop
+    MouseInputHandler --> ActionMenu
